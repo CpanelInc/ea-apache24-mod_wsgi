@@ -1,6 +1,10 @@
-Name: ea-apache24-mod_wsgi
+%global ns_name ea-apache24
+%global upstream_name mod_wsgi
+
+Name: %{ns_name}-%{upstream_name}
 Version: 4.5.7
 Summary: A WSGI compliant interface for hosting Python based web applications on top of the Apache web server
+# Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4556 for more details
 %define release_prefix 2
 Release: %{release_prefix}%{?dist}.cpanel
 License: Apache License, Version 2.0
