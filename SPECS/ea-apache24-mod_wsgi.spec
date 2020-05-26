@@ -15,7 +15,13 @@ Source: https://github.com/GrahamDumpleton/mod_wsgi/archive/4.6.5.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires: ea-apache24-devel
+
+%if 0%{?rhel} >= 8
+BuildRequires: python36-devel
+%else
 BuildRequires: python-devel
+%endif
+
 Requires: ea-apache24
 Requires: python redhat-rpm-config
 
@@ -32,7 +38,12 @@ LoadModule wsgi_module modules/mod_wsgi.so
 EOF
 
 %build
+%if 0%{?rhel} >= 8
+%configure --with-python=python3 --prefix=%{_sysconfdir}/apache2 --exec-prefix=%{_prefix}
+%else
 %configure --prefix=%{_sysconfdir}/apache2 --exec-prefix=%{_prefix}
+%endif
+
 make %{?_smp_mflags}
 
 %install
