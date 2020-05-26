@@ -5,7 +5,7 @@ Name: %{ns_name}-%{upstream_name}
 Version: 4.6.5
 Summary: A WSGI compliant interface for hosting Python based web applications on top of the Apache web server
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4556 for more details
-%define release_prefix 1
+%define release_prefix 2
 Release: %{release_prefix}%{?dist}.cpanel
 License: Apache License, Version 2.0
 Group: System Environment/Daemons
@@ -48,6 +48,9 @@ make %{?_smp_mflags}
 %config(noreplace) %{_sysconfdir}/apache2/conf.d/mod_wsgi.conf
 
 %changelog
+* Tue May 26 2020 Julian Brown <julian.brown@cpanel.net> - 4.6.5-2
+- ZC-6853: Fix for C8
+
 * Thu Nov 08 2018 Cory McIntire <cory@cpanel.net> - 4.6.5-1
 - EA-7997: Update to current version 4.6.5
 
