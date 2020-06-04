@@ -18,12 +18,13 @@ BuildRequires: ea-apache24-devel
 
 %if 0%{?rhel} >= 8
 BuildRequires: python36-devel
+Requires: python36 redhat-rpm-config
 %else
 BuildRequires: python-devel
+Requires: python redhat-rpm-config
 %endif
 
 Requires: ea-apache24
-Requires: python redhat-rpm-config
 
 %description
 A WSGI compliant interface for hosting Python based web applications on top of the Apache web server
